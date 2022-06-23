@@ -1,14 +1,22 @@
-import { Sequelize, Op } from "sequelize";
-import config from "../config/config.js";
+"use strict";
 
-const sequelize = new Sequelize(config.development.database, config.development.username, config.development.password, {
-  host: config.development.host,
-  dialect: "mysql",
-  timezone: "+09:00",
-  dialectOptions: { charset: "utf8mb4", dateStrings: true, typeCast: true },
-  define: {
-    timestamps: true,
-  },
+const Sequelize = require("sequelize");
+const dotenv = require("dotenv");
+dotenv.config();
+const db = {};
+
+let sequelize = new Sequelize({
+    username: process.env.DB_USERNAME,
+    password: process.env.DB_PASSWD,
+    database: process.env.DB_DB_NAME,
+    host: process.env.DB_HOST,
+    port: 3306,
+    dialect: "mysql",
 });
 
-export { sequelize, Op };
+db.sequelize = sequelize;
+db.Sequelize = Sequelize;
+
+db.user = require("./schemas/posts.js")(sequelize, Sequelize);
+
+module.exports = db;
