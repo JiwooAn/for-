@@ -1,7 +1,7 @@
-import app from "./app.js";
-import { sequelize } from "./models/index.js";
-
-import { createServer } from "http";
+const app = require("./app.js");
+const { sequelize } = require("./models/index.js");
+const models = require("./models");
+const { createServer } = require("http");
 
 const port = Number(process.env.PORT) || 5001;
 
@@ -21,4 +21,4 @@ server.listen(port, async () => {
     });
 });
 
-export default server;
+// export default server;

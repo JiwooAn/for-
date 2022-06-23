@@ -36,11 +36,23 @@ module.exports = function (sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: true,
       },
+      attr1: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      attr2: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
+      attr3: {
+        type: DataTypes.INTEGER,
+        allowNull: true,
+      },
     },
     {
       sequelize,
       tableName: "posts",
-      schema: "public",
+      // schema: "public",
       timestamps: false,
       paranoid: true,
     }
